@@ -23,3 +23,4 @@ def bank_upgrade(depo_sum, period, refill=0):
 
 
 print(bank_upgrade(1000, 6, 100))
+# end lesson1
