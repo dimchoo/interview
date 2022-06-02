@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Товар {{ object.name }}{% endblock %}
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    <table>
+      <tr>
+        <th>Price</th>
+        <th>Supplier</th>
+        <th>Categories</th>
+      </tr>
+          <tr>
+            <td>{{ object.price }}</td>
+            <td>{{ object.supplier.name }}</td>
+            <td>{% for cat in  object.categories.all %}
+                {{ cat.name }}
+                {% endfor %}
+            </td>
+          </tr>
+    </table>
+{% endblock %}

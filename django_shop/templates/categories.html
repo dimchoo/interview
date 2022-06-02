@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Категории товаров{% endblock %}
+{% block content %}
+    <table>
+      <tr>
+        <th>Category</th>
+      </tr>
+        {% for obj in object_list %}
+              <tr>
+                <td><a href="{% url 'category-detail' obj.pk %}">{{ obj.name }}</a></td>
+              </tr>
+        {% endfor %}
+    </table>
+    <button>Добавить категорию</button>
+{% endblock %}
