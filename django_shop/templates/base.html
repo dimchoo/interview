@@ -16,6 +16,16 @@
     </style>
 </head>
 <body>
+{% block menu %}
+    <ul>
+        <li>
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+            <a href="{% url 'categories' %}">Categories</a>
+        </li>
+    </ul>
+{% endblock %}
 {% block content %}
 
 {% endblock %}
