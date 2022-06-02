@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Лист товаров{% endblock %}
+{% block content %}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Supplier</th>
+        <th>Categories</th>
+      </tr>
+        {% for obj in object_list %}
+              <tr>
+                <td>{{ obj.name }}</td>
+                <td>{{ obj.price }}</td>
+                <td>{{ obj.supplier.name }}</td>
+                <td>{% for cat in  obj.categories.all %}
+                    {{ cat.name }}
+                    {% endfor %}
+                </td>
+
+              </tr>
+        {% endfor %}
+    </table>
+    <button>Добавить товар</button>
+{% endblock %}
