@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.sites.models import Site
+from django.contrib.sites.managers import CurrentSiteManager
 
 
 class Supplier(models.Model):
@@ -14,6 +16,8 @@ class Supplier(models.Model):
 
 class Category(models.Model):
     name = models.CharField('Название', unique=True, max_length=64)
+    site = models.ForeignKey(Site, on_delete=models.CASCADE, verbose_name='Сайт', related_name='categories', null=True)
+    site_objects = CurrentSiteManager('site')
 
     def __str__(self):
         return self.name
@@ -33,6 +37,9 @@ class Product(models.Model):
                                  related_name='products')
     categories = models.ManyToManyField(Category, verbose_name='Категории',
                                         null=True, blank=True, related_name='products')
+
+    site = models.ManyToManyField(Site, verbose_name='Сайт', related_name='products', null=True)
+    site_objects = CurrentSiteManager('site')
 
     def __str__(self):
         return self.name

@@ -4,7 +4,7 @@ from products.models import Product, Category
 
 class ProductListView(ListView):
     model = Product
-    queryset = Product.objects.select_related('supplier').prefetch_related('categories').all()
+    queryset = Product.site_objects.select_related('supplier').prefetch_related('categories').all()
     template_name = 'index.html'
 
 
@@ -15,7 +15,7 @@ class ProductDetailView(DetailView):
 
 class CategoriesListView(ListView):
     model = Category
-    queryset = Category.objects.all()
+    queryset = Category.site_objects.all()
     template_name = 'categories.html'
 
 
